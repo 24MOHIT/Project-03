@@ -41,6 +41,20 @@ public final class ModelFactory {
 		return productModel;
 	}
 
+	public StockPurchaseModelInt getStockPurchaseModel() {
+		StockPurchaseModelInt stockModel = (StockPurchaseModelInt) modelCache.get("stockModel");
+		if (stockModel == null) {
+			if ("Hibernate".equals(DATABASE)) {
+				stockModel = new StockPurchaseModelHibImp();
+			}
+			if ("JDBC".equals(DATABASE)) {
+				stockModel = new StockPurchaseModelHibImp();
+			}
+			modelCache.put("stockModel", stockModel);
+		}
+		return stockModel;
+	}
+	
 	public MarksheetModelInt getMarksheetModel() {
 		MarksheetModelInt marksheetModel = (MarksheetModelInt) modelCache.get("marksheetModel");
 		if (marksheetModel == null) {
