@@ -4,9 +4,10 @@
 <%@page import="in.co.rays.project_3.util.ServletUtility"%>
 <%@page import="in.co.rays.project_3.util.DataUtility"%>
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
-    pageEncoding="ISO-8859-1"%>
+	pageEncoding="ISO-8859-1"%>
 <!DOCTYPE html>
 <html>
+
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
 <title>Stock Purchase View</title>
@@ -23,18 +24,18 @@ i.css {
 .p4 {
 	background-image: url('<%=ORSView.APP_CONTEXT%>/img/user1.jpg');
 	background-repeat: no-repeat;
-	background-attachment: fixed; 
+	background-attachment: fixed;
 	background-size: cover;
 	padding-top: 75px;
-	
-	/* background-size: 100%; */ 
+
+	/* background-size: 100%; */
 }
 </style>
 </head>
 <body class="p4">
 	<div class="header">
 		<%@include file="Header.jsp"%>
-		<%@include file="calendar.jsp" %>
+		<%@include file="calendar.jsp"%>
 	</div>
 	<div>
 
@@ -43,8 +44,8 @@ i.css {
 
 			<div class="row pt-3 pb-4">
 				<!-- Grid column -->
-				<jsp:useBean id="dto" class="in.co.rays.project_3.dto.StockPurchaseDTO"
-					scope="request"></jsp:useBean>
+				<jsp:useBean id="dto"
+					class="in.co.rays.project_3.dto.StockPurchaseDTO" scope="request"></jsp:useBean>
 				<div class="col-md-4 mb-4"></div>
 				<div class="col-md-4 mb-4">
 					<div class="card">
@@ -139,40 +140,49 @@ i.css {
 								<font color="red" class="pl-sm-5"> <%=ServletUtility.getErrorMessage("purchasePrice", request)%></font></br>
 
 
-								<span class="pl-sm-5"><b>Purchase Date</b>
-	<span style="color: red;">*</span></span></br>
-	<div class="col-sm-12">
-      <div class="input-group">
-        <div class="input-group-prepend">
-          <div class="input-group-text"><i class="fa fa-calendar grey-text" style="font-size: 1rem;"></i> </div>
-        </div>
-        <input type="text" id="datepicker" name="purchaseDate" class="form-control" placeholder=" Enter Purchase Date" readonly="readonly" value="<%=DataUtility.getDateString(dto.getPurchaseDate()) %>">
-      </div>
-    </div>	
-	<font color="red" class="pl-sm-5"> <%=ServletUtility.getErrorMessage("purchaseDate", request)%></font></br>
+								<span class="pl-sm-5"><b>Purchase Date</b> <span
+									style="color: red;">*</span></span></br>
+								<div class="col-sm-12">
+									<div class="input-group">
+										<div class="input-group-prepend">
+											<div class="input-group-text">
+												<i class="fa fa-calendar grey-text" style="font-size: 1rem;"></i>
+											</div>
+										</div>
+										<input type="text" id="udate" name="purchaseDate"
+											class="form-control" placeholder=" Enter Purchase Date"
+											readonly="readonly"
+											value="<%=DataUtility.getDateString(dto.getPurchaseDate())%>">
+									</div>
+								</div>
+								<font color="red" class="pl-sm-5"> <%=ServletUtility.getErrorMessage("purchaseDate", request)%></font></br>
 
-								<span class="pl-sm-5"><b>Order Type</b><span style="color: red;">*</span></span> </br>
-							 
-	<div class="col-sm-12">
-      <div class="input-group">
-        <div class="input-group-prepend">
-          <div class="input-group-text"><i class="fa fa-venus-mars grey-text" style="font-size: 1rem;"></i> </div>
-        </div>
-        
-									<%
-										HashMap map = new HashMap();
-										map.put("High", "High");
-										map.put("Medium", "Medium");
-										map.put("Low", "Low");
-										String htmlList = HTMLUtility.getList("orderType", dto.getOrderType(), map);
-									%>
-									<%=htmlList%></div>
-      
-    </div>		
-	<font color="red" class="pl-sm-5"> <%=ServletUtility.getErrorMessage("orderType", request)%></font></br>
-							
+								<span class="pl-sm-5"><b>Order Type</b><span
+									style="color: red;">*</span></span> </br>
 
-								
+								<div class="col-sm-12">
+									<div class="input-group">
+										<div class="input-group-prepend">
+											<div class="input-group-text">
+												<i class="fa fa-venus-mars grey-text"
+													style="font-size: 1rem;"></i>
+											</div>
+										</div>
+
+										<%
+											HashMap map = new HashMap();
+											map.put("High", "High");
+											map.put("Medium", "Medium");
+											map.put("Low", "Low");
+											String htmlList = HTMLUtility.getList("orderType", dto.getOrderType(), map);
+										%>
+										<%=htmlList%></div>
+
+								</div>
+								<font color="red" class="pl-sm-5"> <%=ServletUtility.getErrorMessage("orderType", request)%></font></br>
+
+
+
 							</div>
 							</br>
 							<%
@@ -182,8 +192,8 @@ i.css {
 
 								<input type="submit" name="operation"
 									class="btn btn-success btn-md" style="font-size: 17px"
-									value="<%=StockPurchaseCtl.OP_UPDATE%>"> <input type="submit"
-									name="operation" class="btn btn-warning btn-md"
+									value="<%=StockPurchaseCtl.OP_UPDATE%>"> <input
+									type="submit" name="operation" class="btn btn-warning btn-md"
 									style="font-size: 17px" value="<%=StockPurchaseCtl.OP_CANCEL%>">
 							</div>
 							<%
@@ -193,8 +203,8 @@ i.css {
 
 								<input type="submit" name="operation"
 									class="btn btn-success btn-md" style="font-size: 17px"
-									value="<%=StockPurchaseCtl.OP_SAVE%>"> <input type="submit"
-									name="operation" class="btn btn-warning btn-md"
+									value="<%=StockPurchaseCtl.OP_SAVE%>"> <input
+									type="submit" name="operation" class="btn btn-warning btn-md"
 									style="font-size: 17px" value="<%=StockPurchaseCtl.OP_RESET%>">
 							</div>
 							<%
@@ -213,7 +223,7 @@ i.css {
 	</div>
 
 
-<%@include file="FooterView.jsp"%>
+	<%@include file="FooterView.jsp"%>
 
 </body>
 </html>

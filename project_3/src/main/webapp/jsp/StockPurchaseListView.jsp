@@ -134,7 +134,7 @@
 				 &emsp;
 
 <div class="col-sm-2">
-					<input type="text" id="datepicker" name="purchaseDate"
+					<input type="text" id="udate" name="purchaseDate"
 						placeholder="Enter Purchase Date" class="form-control"
 						value="<%=ServletUtility.getParameter("purchaseDate", request)%>">
 				</div>
