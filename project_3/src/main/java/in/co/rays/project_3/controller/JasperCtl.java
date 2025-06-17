@@ -40,12 +40,11 @@ public class JasperCtl extends BaseCtl {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 		try {
-			
+
 			ResourceBundle rb = ResourceBundle.getBundle("in.co.rays.project_3.bundle.system");
-			
+
 			/* Compilation of jrxml file */
-			JasperReport jasperReport = JasperCompileManager
-					.compileReport(rb.getString("jasperctl"));
+			JasperReport jasperReport = JasperCompileManager.compileReport(rb.getString("jasperctl"));
 
 			HttpSession session = request.getSession(true);
 			UserDTO dto = (UserDTO) session.getAttribute("user");
@@ -56,11 +55,8 @@ public class JasperCtl extends BaseCtl {
 			map.put("ID", 1l);
 			java.sql.Connection conn = null;
 
-
-
-
 			String Database = rb.getString("DATABASE");
-			
+
 			if ("Hibernate".equalsIgnoreCase(Database)) {
 				conn = ((SessionImpl) HibDataSource.getSession()).connection();
 			}
